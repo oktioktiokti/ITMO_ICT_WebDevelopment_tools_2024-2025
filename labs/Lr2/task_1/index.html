@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
-        <title>Lr1 - Web Tools</title>
+        <title>Task 1 - Web Tools</title>
         <link href="../../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../../css/brands.min.css" rel="stylesheet">
@@ -38,36 +38,36 @@
                                 <a href="../../.." class="nav-link">Home</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Lr1</a>
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Lr1</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../Pr1/" class="dropdown-item">1.1</a>
+    <a href="../../Lr1/Pr1/" class="dropdown-item">1.1</a>
 </li>
                                     
 <li>
-    <a href="../Pr2/" class="dropdown-item">1.2</a>
+    <a href="../../Lr1/Pr2/" class="dropdown-item">1.2</a>
 </li>
                                     
 <li>
-    <a href="../Pr3/" class="dropdown-item">1.3</a>
+    <a href="../../Lr1/Pr3/" class="dropdown-item">1.3</a>
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active" aria-current="page">Lr1</a>
+    <a href="../../Lr1/Lr1/" class="dropdown-item">Lr1</a>
 </li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Lr2</a>
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Lr2</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../Lr2/task_1/" class="dropdown-item">Task 1</a>
+    <a href="./" class="dropdown-item active" aria-current="page">Task 1</a>
 </li>
                                     
 <li>
-    <a href="../../Lr2/task_2/" class="dropdown-item">Task 2</a>
+    <a href="../task_2/" class="dropdown-item">Task 2</a>
 </li>
                                 </ul>
                             </li>
@@ -80,12 +80,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../Pr3/" class="nav-link">
+                                <a rel="prev" href="../../Lr1/Lr1/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../../Lr2/task_1/" class="nav-link">
+                                <a rel="next" href="../task_2/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -107,17 +107,9 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#1" class="nav-link">Отчет по лабораторной работе 1</a>
+            <li class="nav-item" data-bs-level="1"><a href="#2" class="nav-link">Отчет по лабораторной работе 2.</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#fastapi" class="nav-link">Реализация серверного приложения FastAPI для управления личными финансами</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#1_1" class="nav-link">1. Модели данных</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#2" class="nav-link">2. Реализованные эндпоинты</a>
+            <li class="nav-item" data-bs-level="2"><a href="#1" class="nav-link">Потоки. Процессы. Асинхронность. Часть 1</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -128,75 +120,160 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="1">Отчет по лабораторной работе 1</h1>
-<h2 id="fastapi">Реализация серверного приложения FastAPI для управления личными финансами</h2>
+<h1 id="2">Отчет по лабораторной работе 2.</h1>
+<h2 id="1">Потоки. Процессы. Асинхронность. Часть 1</h2>
 <hr />
 <h3 id="github">Ссылка на GitHub</h3>
-<p><a href="https://github.com/TonikX/ITMO_ICT_WebDevelopment_tools_2024-2025/pull/31">Репозиторий проекта</a>  </p>
-<hr />
-<h2 id="1_1">1. Модели данных</h2>
-<pre><code class="language-python"># app/models.py
-from sqlmodel import SQLModel, Field, Relationship
-from typing import Optional, List
-from datetime import date
-from pydantic import EmailStr
+<p><a href="https://github.com/TonikX/ITMO_ICT_WebDevelopment_tools_2024-2025/pull/71">Репозиторий проекта</a>  </p>
+<h3 id="1_1">1. Листинг кода</h3>
+<h4 id="calc_asynciopy">calc_asyncio.py</h4>
+<pre><code class="language-python">import asyncio
 
-class User(SQLModel, table=True):
-    id: Optional[int] = Field(default=None, primary_key=True)
-    username: str = Field(index=True, unique=True)
-    email: EmailStr = Field(index=True, unique=True)
-    hashed_password: str
-    is_active: bool = Field(default=True)
+async def calculate_sum(start, end):
+    return sum(range(start, end))
 
-    transactions: List[&quot;Transaction&quot;] = Relationship(back_populates=&quot;user&quot;)
-    budgets: List[&quot;Budget&quot;] = Relationship(back_populates=&quot;user&quot;)
-    goals: List[&quot;Goal&quot;] = Relationship(back_populates=&quot;user&quot;)
+async def main():
+    target = 10**9
+    num_tasks = 5
+    chunk_size = target // num_tasks
+    tasks = []
 
-class Category(SQLModel, table=True):
-    id: Optional[int] = Field(default=None, primary_key=True)
-    name: str = Field(index=True)
-    type: str  # &quot;income&quot; или &quot;expense&quot;
+    for i in range(num_tasks):
+        start = i * chunk_size + 1
+        end = (i + 1) * chunk_size + 1
+        tasks.append(calculate_sum(start, end))
 
-    transactions: List[&quot;Transaction&quot;] = Relationship(back_populates=&quot;category&quot;)
-    budgets: List[&quot;Budget&quot;] = Relationship(back_populates=&quot;category&quot;)
+    results = await asyncio.gather(*tasks)
 
-class Transaction(SQLModel, table=True):
-    id: Optional[int] = Field(default=None, primary_key=True)
-    amount: float
-    date: date = Field(default=date.today())
-    description: Optional[str] = None
-    user_id: int = Field(foreign_key=&quot;user.id&quot;)
-    category_id: int = Field(foreign_key=&quot;category.id&quot;)
+    total_sum = sum(results)
 
-    user: User = Relationship(back_populates=&quot;transactions&quot;)
-    category: Category = Relationship(back_populates=&quot;transactions&quot;)
+    print(f&quot;Вычисленная сумма: {total_sum}&quot;)
 
-class Budget(SQLModel, table=True):
-    id: Optional[int] = Field(default=None, primary_key=True)
-    amount: float
-    start_date: date
-    end_date: date
-    user_id: int = Field(foreign_key=&quot;user.id&quot;)
-    category_id: int = Field(foreign_key=&quot;category.id&quot;)
-
-    user: User = Relationship(back_populates=&quot;budgets&quot;)
-    category: Category = Relationship(back_populates=&quot;budgets&quot;)
-
-class Goal(SQLModel, table=True):
-    id: Optional[int] = Field(default=None, primary_key=True)
-    name: str
-    target_amount: float
-    current_amount: float = Field(default=0)
-    target_date: date
-    user_id: int = Field(foreign_key=&quot;user.id&quot;)
-
-    user: User = Relationship(back_populates=&quot;goals&quot;)
+if __name__ == &quot;__main__&quot;:
+    asyncio.run(main())
 </code></pre>
-<hr />
-<h2 id="2">2. Реализованные эндпоинты</h2>
-<p><img alt="alt text" src="../image-6.png" />
-<img alt="alt text" src="../image-7.png" />
-<img alt="alt text" src="../image-8.png" /></p></div>
+<h4 id="calc_multiprocessingpy">calc_multiprocessing.py</h4>
+<pre><code class="language-python">import multiprocessing
+
+def calculate_sum(start_end):
+    start, end = start_end
+    return sum(range(start, end))
+
+def main():
+    target = 10**9
+    num_processes = 5
+    chunk_size = target // num_processes
+    ranges = [(i * chunk_size + 1, (i + 1) * chunk_size + 1) for i in range(num_processes)]
+
+    with multiprocessing.Pool(processes=num_processes) as pool:
+        results = pool.map(calculate_sum, ranges)
+
+    total_sum = sum(results)
+
+    print(f&quot;Вычисленная сумма: {total_sum}&quot;)
+
+
+if __name__ == &quot;__main__&quot;:
+    multiprocessing.set_start_method('spawn')
+    main()
+</code></pre>
+<h4 id="calc_threading">calc_threading</h4>
+<pre><code class="language-python">import threading
+
+def calculate_sum(start, end, result, index):
+    result[index] = sum(range(start, end))
+
+def main():
+    total = 10**9
+    num_threads = 5
+    chunk_size = total // num_threads
+    threads = []
+    results = [0] * num_threads
+
+
+    for i in range(num_threads):
+        start = i * chunk_size + 1
+        end = (i + 1) * chunk_size + 1
+        thread = threading.Thread(target=calculate_sum, args=(start, end, results, i))
+        threads.append(thread)
+        thread.start()
+
+    for t in threads:
+        t.join()
+
+    total_sum = sum(results)
+
+    print(f&quot;Вычисленная сумма: {total_sum}&quot;)
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre>
+<h4 id="runnerpy">runner.py</h4>
+<pre><code class="language-python">import subprocess
+import time
+
+PROGRAMS = {
+    &quot;Threading&quot;: &quot;calc_threading.py&quot;,
+    &quot;Multiprocessing&quot;: &quot;calc_multiprocessing.py&quot;,
+    &quot;Asyncio&quot;: &quot;calc_asyncio.py&quot;
+}
+
+def run_program(name, path):
+    start_time = time.time()
+    subprocess.run([&quot;python&quot;, path], check=True)
+    elapsed = time.time() - start_time
+    print(f&quot;{name} completed in {elapsed:.2f} seconds.\n&quot;)
+    return elapsed
+
+def main():
+    results = {}
+    for name, path in PROGRAMS.items():
+        elapsed = run_program(name, path)
+        results[name] = elapsed
+
+    print(&quot;\nСравнение:&quot;)
+    for name, time_taken in results.items():
+        if time_taken is not None:
+            print(f&quot;{name:15} — {time_taken:.2f} seconds&quot;)
+        else:
+            print(f&quot;{name:15} — Failed to run&quot;)
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre>
+<h3 id="2_1">2. Время выполнения</h3>
+<table>
+<thead>
+<tr>
+<th>Размер данных</th>
+<th>Threading</th>
+<th>Multiprocessing</th>
+<th>Asyncio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10^7</td>
+<td>0.44</td>
+<td>1.14</td>
+<td>0.45</td>
+</tr>
+<tr>
+<td>10^8</td>
+<td>0.98</td>
+<td>1.17</td>
+<td>1.12</td>
+</tr>
+<tr>
+<td>10^9</td>
+<td>6.88</td>
+<td>2.42</td>
+<td>7.09</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3">3. Вывод</h3>
+<p>Таким образом, <code>multriprocessing</code> выигрывает по времени при очень больших объемах данных за счёт использования нескольких CPU-ядер, и таким образом он лучше масштабируется</p></div>
             </div>
         </div>
 
